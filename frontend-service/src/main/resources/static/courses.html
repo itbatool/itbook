@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Courses — ITBook</title>
+    <link rel="icon" href="/img/logo.png" type="image/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap"/>
+    <link rel="stylesheet" href="/css/courses.css" />
+    <link rel="stylesheet" href="/css/shared.css" />
+</head>
+<body>
+<!-- ── NAVBAR ──────────────────────────────────────────────────── -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-brand">
+            <div class="logo-wrapper">
+                <img src="/img/logowhite.png" alt="ITBook" class="logo" />
+            </div>
+            <div class="brand-text">
+                <h2>ITBook</h2>
+                <span class="brand-tagline">Est. 2026 · Learn · Build · Excel</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="courses.html" class="nav-link active">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Courses</span>
+            </a>
+            <a href="my-courses.html" class="nav-link">
+                <i class="fas fa-book-open"></i>
+                <span>My Courses</span>
+            </a>
+            <a href="account.html" class="nav-link">
+                <i class="fas fa-user-circle"></i>
+                <span>Account</span>
+            </a>
+            <a href="about.html" class="nav-link">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+            </a>
+        </div>
+        <div class="user-menu">
+            <button class="user-btn">
+                <div class="user-avatar" id="navUserAvatar">U</div>
+                <span id="navUserName">User</span>
+                <i class="fas fa-chevron-down" style="font-size: 9px; opacity: 0.4; margin-left: 2px"></i>
+            </button>
+            <div class="user-dropdown">
+                <a href="/account.html"><i class="fas fa-user-circle"></i> Account</a>
+                <a href="/my-courses.html?view=my"><i class="fas fa-book"></i> My Courses</a>
+                <div class="dropdown-divider"></div>
+                <a href="#" onclick="logout()" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- ── HERO ────────────────────────────────────────────────────── -->
+<section class="hero-section">
+    <div class="hero-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+    </div>
+    <div class="hero-content">
+        <div class="hero-badge">20+ Courses Available</div>
+        <h1 class="hero-title">
+            Master Computer Science
+            <span class="title-highlight">With Expert Guidance</span>
+        </h1>
+        <p class="hero-subtitle">
+            Build real-world skills through comprehensive courses designed by industry professionals.
+        </p>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Students</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Courses</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4.8</div>
+                <div class="stat-label">Avg Rating</div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ── COURSES ──────────────────────────────────────────────────── -->
+<div class="courses-container">
+    <div class="section-header">
+        <div class="section-title-wrapper">
+            <h2 class="section-title">Explore Courses</h2>
+            <p class="section-subtitle">Find the perfect course to advance your career</p>
+        </div>
+        <div class="search-filter-wrapper">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search the catalogue…" />
+            </div>
+        </div>
+    </div>
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+        <p>Loading courses…</p>
+    </div>
+    <div class="courses-grid" id="coursesGrid">
+        <!-- courses.js -->
+    </div>
+</div>
+<!-- ── FOOTER ──────────────────────────────────────────────────── -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="footer-logo-wrapper">
+                    <img src="/img/logowhite.png" alt="ITBook" class="footer-logo" />
+                </div>
+                <h3>ITBook</h3>
+                <p>Empowering learners worldwide with cutting-edge computer science education.</p>
+            </div>
+            <div class="footer-links-group">
+                <div class="footer-column">
+                    <h4>Platform</h4>
+                    <a href="courses.html">Courses</a>
+                    <a href="about.html">About Us</a>
+                    <a href="account.html">Account</a>
+                </div>
+                <div class="footer-column"></div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ITBOOK — All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <span>·</span>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="/js/session.js"></script>
+<script src="/js/courses.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account — ITBook</title>
+    <link rel="icon" href="/img/logo.png" type="image/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap"/>
+    <link rel="stylesheet" href="/css/account.css" />
+    <link rel="stylesheet" href="/css/shared.css" />
+</head>
+<body>
+<!-- ── NAVBAR ──────────────────────────────────────────────────── -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-brand">
+            <div class="logo-wrapper">
+                <img src="/img/logowhite.png" alt="ITBook" class="logo" />
+            </div>
+            <div class="brand-text">
+                <h2>ITBook</h2>
+                <span class="brand-tagline">Est. 2024 · Learn · Build · Excel</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="courses.html" class="nav-link">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Courses</span>
+            </a>
+            <a href="my-courses.html" class="nav-link">
+                <i class="fas fa-book-open"></i>
+                <span>My Courses</span>
+            </a>
+            <a href="account.html" class="nav-link active">
+                <i class="fas fa-user-circle"></i>
+                <span>Account</span>
+            </a>
+            <a href="about.html" class="nav-link">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+            </a>
+        </div>
+        <div class="user-menu">
+            <button class="user-btn">
+                <div class="user-avatar" id="navUserAvatar">U</div>
+                <span id="navUserName">User</span>
+                <i class="fas fa-chevron-down" style="font-size: 9px; opacity: 0.4; margin-left: 2px"></i>
+            </button>
+            <div class="user-dropdown">
+                <a href="/account.html"><i class="fas fa-user-circle"></i> Account</a>
+                <a href="/my-courses.html?view=my"><i class="fas fa-book"></i> My Courses</a>
+                <div class="dropdown-divider"></div>
+                <a href="#" onclick="logout()" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<section class="account-header">
+    <div class="account-header-inner">
+        <div class="header-badge">◆ My Account ◆</div>
+        <h1>My Account</h1>
+        <p>Manage your profile, security, and preferences.</p>
+    </div>
+</section>
+<!-- ── MAIN CONTENT ─────────────────────────────────────────────── -->
+<div class="account-container">
+    <div class="account-grid">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="profile-card">
+                <div class="profile-avatar" id="avatarDisplay">
+                    <i class="fas fa-user"></i>
+                </div>
+                <input type="file" id="avatarUpload" accept="image/*" style="display: none" />
+                <button
+                        type="button"
+                        onclick="document.getElementById('avatarUpload').click()"
+                        class="btn-upload"
+                >
+                    Upload Photo
+                </button>
+                <button
+                        type="button"
+                        id="removeAvatarBtn"
+                        onclick="removeAvatar()"
+                        class="btn-upload btn-remove-avatar"
+                        style="display: none"
+                >
+                    Remove Photo
+                </button>
+                <h3 id="userName">User Name</h3>
+                <p id="userEmail">user@example.com</p>
+            </div>
+            <nav class="settings-nav">
+                <button class="settings-btn active" onclick="switchSection('profile')">
+                    <i class="fas fa-user"></i> Profile
+                </button>
+                <button class="settings-btn" onclick="switchSection('password')">
+                    <i class="fas fa-lock"></i> Password
+                </button>
+            </nav>
+        </aside>
+        <!-- MAIN PANEL -->
+        <main class="main-content">
+            <!-- PROFILE -->
+            <section id="profile" class="settings-section active">
+                <div class="section-header">
+                    <h2>Profile Information</h2>
+                    <p>Update your personal details.</p>
+                </div>
+                <form class="form" id="profileForm" method="POST">
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="email" name="email" />
+                        <button type="submit" class="btn-primary" data-type="email">Update Email</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="fullName" name="fullName" />
+                        <button type="submit" class="btn-primary" data-type="name">Update Name</button>
+                    </div>
+                </form>
+            </section>
+            <!-- PASSWORD -->
+            <section id="password" class="settings-section">
+                <div class="section-header">
+                    <h2>Change Password</h2>
+                    <p>Keep your account secure.</p>
+                </div>
+                <form class="form">
+                    <div class="form-group">
+                        <label>Current Password</label>
+                        <input type="password" id="currentPassword" />
+                    </div>
+                    <div class="form-group">
+                        <label>New Password</label>
+                        <input type="password" id="newPassword" />
+                    </div>
+                    <div class="password-requirements" id="passwordRequirements">
+                        <p id="reqLength"><i class="fas fa-circle-xmark"></i> At least 8 characters</p>
+                        <p id="reqCase"><i class="fas fa-circle-xmark"></i> Mix of uppercase and lowercase</p>
+                        <p id="reqSymbols"><i class="fas fa-circle-xmark"></i> Include numbers and symbols</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" id="confirmPassword" />
+                    </div>
+                    <button type="submit" class="btn-primary">Update Password</button>
+                </form>
+            </section>
+            <!-- DANGER ZONE -->
+            <section class="danger-zone">
+                <h3>Danger Zone</h3>
+                <p>Irreversible actions.</p>
+                <button class="btn-danger" onclick="deleteAccount()">Delete Account</button>
+            </section>
+        </main>
+    </div>
+</div>
+<!-- ── FOOTER ──────────────────────────────────────────────────── -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="footer-logo-wrapper">
+                    <img src="/img/logowhite.png" alt="ITBook" class="footer-logo" />
+                </div>
+                <h3>ITBook</h3>
+                <p>Empowering learners worldwide with cutting-edge computer science education.</p>
+            </div>
+            <div class="footer-links-group">
+                <div class="footer-column">
+                    <h4>Platform</h4>
+                    <a href="courses.html">Courses</a>
+                    <a href="about.html">About Us</a>
+                    <a href="account.html">Account</a>
+                </div>
+                <div class="footer-column"></div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ITBOOK — All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <span>·</span>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="/js/session.js"></script>
+<script src="/js/account.js"></script>
+</body>
+</html>

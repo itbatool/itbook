@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About — ITBook</title>
+    <link rel="icon" href="/img/logo.png" type="image/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap"/>
+    <link rel="stylesheet" href="/css/about.css" />
+    <link rel="stylesheet" href="/css/shared.css" />
+</head>
+<body>
+<!-- ── NAVBAR ──────────────────────────────────────────────────── -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-brand">
+            <div class="logo-wrapper">
+                <img src="/img/logowhite.png" alt="ITBook" class="logo" />
+            </div>
+            <div class="brand-text">
+                <h2>ITBook</h2>
+                <span class="brand-tagline">Est. 2024 · Learn · Build · Excel</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="courses.html" class="nav-link">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Courses</span>
+            </a>
+            <a href="my-courses.html" class="nav-link">
+                <i class="fas fa-book-open"></i>
+                <span>My Courses</span>
+            </a>
+            <a href="account.html" class="nav-link">
+                <i class="fas fa-user-circle"></i>
+                <span>Account</span>
+            </a>
+            <a href="about.html" class="nav-link active">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+            </a>
+        </div>
+        <div class="user-menu">
+            <button class="user-btn">
+                <div class="user-avatar" id="navUserAvatar">U</div>
+                <span id="navUserName">User</span>
+                <i class="fas fa-chevron-down" style="font-size: 9px; opacity: 0.4; margin-left: 2px"></i>
+            </button>
+            <div class="user-dropdown">
+                <a href="/account.html"><i class="fas fa-user-circle"></i> Account</a>
+                <a href="/my-courses.html?view=my"><i class="fas fa-book"></i> My Courses</a>
+                <div class="dropdown-divider"></div>
+                <a href="#" onclick="logout()" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- ── HERO ────────────────────────────────────────────────────── -->
+<section class="about-hero">
+    <div class="about-hero-inner">
+        <h1>About ITBook</h1>
+        <p>Empowering students to learn, collaborate, and excel together.</p>
+    </div>
+</section>
+<!-- ── MISSION & VISION ─────────────────────────────────────────── -->
+<section class="about-section parchment-section">
+    <div class="container narrow">
+        <div class="editorial-grid two-col">
+            <div class="editorial-block">
+                <div class="icon-circle">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h2>Our Mission</h2>
+                <p>
+                    ITBook is dedicated to transforming how students engage in their academic journeys. We
+                    believe education thrives when communication and collaboration are seamless.
+                </p>
+                <p>
+                    Our platform provides a unified space where students access course materials, connect with
+                    peers, and collaborate — all within a refined academic environment.
+                </p>
+            </div>
+            <div class="editorial-block">
+                <div class="icon-circle">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h2>Our Vision</h2>
+                <p>
+                    We envision a world where every student has access to world-class educational resources and
+                    a supportive intellectual community.
+                </p>
+                <p>
+                    By connecting learners across institutions and disciplines, ITBook cultivates an ecosystem
+                    of innovation, knowledge sharing, and academic excellence.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ── FEATURES ─────────────────────────────────────────────────── -->
+<section class="about-section ink-section">
+    <div class="container">
+        <div class="section-header centered">
+            <h2>Why Choose ITBook?</h2>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fas fa-book-open"></i>
+                <h3>Comprehensive Courses</h3>
+                <p>Structured computer science programs with complete materials and guided progression.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-comments"></i>
+                <h3>Real-time Collaboration</h3>
+                <p>Engage in course discussions and collaborate seamlessly with peers.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-users"></i>
+                <h3>Community Learning</h3>
+                <p>A refined academic environment built for collective growth.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Privacy First</h3>
+                <p>Designed with your security and academic integrity in mind.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Accessible Anywhere</h3>
+                <p>Learn from any device, anywhere in the world.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Track Progress</h3>
+                <p>Monitor your development with clear and structured progress tracking.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ── BENEFITS ─────────────────────────────────────────────────── -->
+<section class="about-section parchment-section">
+    <div class="container narrow">
+        <div class="section-header centered">
+            <h2>Student Benefits</h2>
+        </div>
+        <div class="benefit-grid">
+            <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <h4>Improved Communication</h4>
+                    <p>Seamless interaction with instructors and classmates.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <h4>Enhanced Learning</h4>
+                    <p>Multimedia resources and collaborative projects.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <h4>Centralized Resources</h4>
+                    <p>All materials organized in one structured system.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                    <h4>Increased Productivity</h4>
+                    <p>Streamlined academic workflow.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ── STATS ─────────────────────────────────────────────────────── -->
+<section class="about-section stats-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">18+</div>
+                <div class="stat-label">Active Courses</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Students</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Daily Interactions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Support</div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ── CTA ───────────────────────────────────────────────────────── -->
+<section class="cta-section">
+    <div class="cta-inner">
+        <h2>Ready to Begin?</h2>
+        <p>Join thousands of students already learning with ITBook.</p>
+        <a href="courses.html" class="cta-btn">
+            Explore Courses
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</section>
+<!-- ── FOOTER ──────────────────────────────────────────────────── -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="footer-logo-wrapper">
+                    <img src="/img/logowhite.png" alt="ITBook" class="footer-logo" />
+                </div>
+                <h3>ITBook</h3>
+                <p>Empowering learners worldwide with cutting-edge computer science education.</p>
+            </div>
+            <div class="footer-links-group">
+                <div class="footer-column">
+                    <h4>Platform</h4>
+                    <a href="courses.html">Courses</a>
+                    <a href="about.html">About Us</a>
+                    <a href="account.html">Account</a>
+                </div>
+                <div class="footer-column"></div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ITBOOK — All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <span>·</span>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="/js/session.js"></script>
+</body>
+</html>

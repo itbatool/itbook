@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="UserServiceApplication" type="Application" factoryName="Application">
+        <option name="MAIN_CLASS_NAME" value="com.itbook.user_service.UserServiceApplication" />
+        <module name="user-service" />
+        <method v="2">
+            <option name="Make" enabled="true" />
+        </method>
+    </configuration>
+</component>

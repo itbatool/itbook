@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ServiceRegisteryApplication" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.itbook.service.registry.ServiceRegisteryApplication" />
+    <module name="service-registry" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

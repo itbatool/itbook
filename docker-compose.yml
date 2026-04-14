@@ -1,0 +1,106 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-itbook_db}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root_password}
+      MYSQL_USER: ${MYSQL_USER:-app_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-app_password}
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-root_password}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  service-registry:
+    build: ./service-registry
+    container_name: service-registry
+    ports:
+      - "8761:8761"
+    environment:
+      EUREKA_INSTANCE_HOSTNAME: service-registry
+      EUREKA_INSTANCE_PREFER_IP_ADDRESS: "false"
+
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    ports:
+      - "8765:8765"
+    depends_on:
+      service-registry:
+        condition: service_started
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://service-registry:8761/eureka/
+      EUREKA_INSTANCE_HOSTNAME: api-gateway
+      EUREKA_INSTANCE_PREFER_IP_ADDRESS: "false"
+
+  frontend-service:
+    build: ./frontend-service
+    container_name: frontend-service
+    ports:
+      - "8000:8000"
+    depends_on:
+      service-registry:
+        condition: service_started
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://service-registry:8761/eureka/
+      EUREKA_INSTANCE_HOSTNAME: frontend-service
+      EUREKA_INSTANCE_PREFER_IP_ADDRESS: "false"
+
+  user-service:
+    build: ./services/user-service
+    container_name: user-service
+    ports:
+      - "8001:8001"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      service-registry:
+        condition: service_started
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://service-registry:8761/eureka/
+      EUREKA_INSTANCE_HOSTNAME: user-service
+      EUREKA_INSTANCE_PREFER_IP_ADDRESS: "false"
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/${MYSQL_DATABASE:-itbook_db}
+      SPRING_DATASOURCE_USERNAME: ${MYSQL_USER:-app_user}
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD:-app_password}
+
+  course-service:
+    build: ./services/course-service
+    container_name: course-service
+    ports:
+      - "8002:8002"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      service-registry:
+        condition: service_started
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://service-registry:8761/eureka/
+      EUREKA_INSTANCE_HOSTNAME: course-service
+      EUREKA_INSTANCE_PREFER_IP_ADDRESS: "false"
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/${MYSQL_DATABASE:-itbook_db}
+      SPRING_DATASOURCE_USERNAME: ${MYSQL_USER:-app_user}
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD:-app_password}
+
+  chat-service:
+    build: ./services/chat-service
+    container_name: chat-service
+    ports:
+      - "8003:8003"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      service-registry:
+        condition: service_started
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://service-registry:8761/eureka/
+      EUREKA_INSTANCE_HOSTNAME: chat-service
+      EUREKA_INSTANCE_PREFER_IP_ADDRESS: "false"
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/${MYSQL_DATABASE:-itbook_db}
+      SPRING_DATASOURCE_USERNAME: ${MYSQL_USER:-app_user}
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD:-app_password}

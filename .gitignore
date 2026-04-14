@@ -1,0 +1,12 @@
+# Project exclude paths
+/api-gateway/target/
+/frontend-service/target/
+/out/
+/service-registry/target/
+/services/course-service/target/
+/services/user-service/target/
+/services/user-service/uploads/avatars/*
+.env
+.idea/*
+!.idea/runConfigurations/
+!.idea/runConfigurations/*

@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ApiGatewayApplication" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.itbook.api_gateway.ApiGatewayApplication" />
+    <module name="api-gateway" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

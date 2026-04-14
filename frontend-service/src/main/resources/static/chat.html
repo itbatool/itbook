@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Chat - ITBook</title>
+    <link rel="icon" href="/img/logowhite.png" type="image/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@twemoji/api@15.1.0/dist/twemoji.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/chat.css" />
+</head>
+<body style="display: none">
+<div id="chat-page">
+    <div class="chat-wrapper">
+        <div class="chat-header">
+            <div class="header-left">
+                <div class="header-title">
+                    <h2 id="courseTitle">Course Chat</h2>
+                    <span class="header-status" id="header-status">Connecting...</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="btn-icon" id="back-btn" title="Back to Course">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+        <div id="messageArea" class="message-area"></div>
+        <form id="messageForm" class="message-form">
+            <div class="input-wrapper">
+                <button type="button" class="btn-emoji" id="emojiToggle">
+                    <i class="fas fa-face-smile"></i>
+                </button>
+                <div id="message" contenteditable="true" placeholder="Type a message..." class="message-input"></div>
+                <button type="submit" class="btn-send">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="/js/session.js"></script>
+<script src="/js/chat.js"></script>
+<script>
+    document.getElementById("back-btn").addEventListener("click", () => {
+        const courseId = new URLSearchParams(window.location.search).get("courseId");
+        window.location.href = "/course-detail.html?id=" + courseId;
+    });
+</script>
+</body>
+</html>

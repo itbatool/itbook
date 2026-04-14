@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="CoursesServiceApplication" type="Application" factoryName="Application">
+        <option name="MAIN_CLASS_NAME" value="com.itbook.course_service.CourseServiceApplication" />
+        <module name="course-service" />
+        <method v="2">
+            <option name="Make" enabled="true" />
+        </method>
+    </configuration>
+</component>

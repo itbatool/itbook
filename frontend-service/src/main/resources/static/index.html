@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>ITBook</title>
+</head>
+<body>
+<script>
+    const token = localStorage.getItem("token");
+
+    if (token) {
+        window.location.href = "/courses.html";
+    } else {
+        window.location.href = "/login.html";
+    }
+</script>
+</body>
+</html>

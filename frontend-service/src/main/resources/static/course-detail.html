@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course — ITBook</title>
+    <link rel="icon" href="/img/logo.png" type="image/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&display=swap"/>
+    <link rel="stylesheet" href="/css/course-detail.css" />
+    <link rel="stylesheet" href="/css/shared.css" />
+</head>
+<body>
+<!-- ── NAVBAR ──────────────────────────────────────────────────── -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-brand">
+            <div class="logo-wrapper">
+                <img src="/img/logowhite.png" alt="ITBook" class="logo" />
+            </div>
+            <div class="brand-text">
+                <h2>ITBook</h2>
+                <span class="brand-tagline">Est. 2026 · Learn · Build · Excel</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="courses.html" class="nav-link">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Courses</span>
+            </a>
+            <a href="my-courses.html" class="nav-link active">
+                <i class="fas fa-book-open"></i>
+                <span>My Courses</span>
+            </a>
+            <a href="account.html" class="nav-link">
+                <i class="fas fa-user-circle"></i>
+                <span>Account</span>
+            </a>
+            <a href="about.html" class="nav-link">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+            </a>
+        </div>
+        <div class="user-menu">
+            <button class="user-btn">
+                <div class="user-avatar" id="navUserAvatar">U</div>
+                <span id="navUserName">User</span>
+                <i class="fas fa-chevron-down" style="font-size: 9px; opacity: 0.4; margin-left: 2px"></i>
+            </button>
+            <div class="user-dropdown">
+                <a href="/account.html"><i class="fas fa-user-circle"></i> Account</a>
+                <a href="/my-courses.html?view=my"><i class="fas fa-book"></i> My Courses</a>
+                <div class="dropdown-divider"></div>
+                <a href="#" onclick="logout()" class="logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- ── LOADING ──────────────────────────────────────────────────── -->
+<div id="loadingIndicator" class="loading-state">
+    <div class="loading-spinner"></div>
+    <p>Loading course details…</p>
+</div>
+<!-- ── COURSE HERO ───────────────────────────────────────────────── -->
+<div class="course-hero" id="courseHeader" style="display: none">
+    <div class="hero-bg" id="heroBackground">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+    </div>
+    <div class="hero-container">
+        <div class="course-badge">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Professional Course</span>
+        </div>
+        <h1 id="courseTitle" class="course-hero-title">Course Title</h1>
+        <p id="courseDesc" class="course-hero-desc">Course Description</p>
+        <div class="hero-meta">
+            <div class="meta-chip">
+                <i class="fas fa-users"></i>
+                <span><span id="courseStudents">0</span> Students</span>
+            </div>
+            <div class="meta-chip">
+                <i class="fas fa-star"></i>
+                <span>4.8 Rating</span>
+            </div>
+            <div class="meta-chip">
+                <i class="fas fa-clock"></i>
+                <span>12 Weeks</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ── MAIN CONTENT ─────────────────────────────────────────────── -->
+<div class="course-container" id="courseContainer" style="display: none">
+    <div class="content-wrapper">
+        <!-- Tabs Nav -->
+        <div class="tabs-nav">
+            <button class="tab-nav-btn active" onclick="switchTab('overview')">
+                <i class="fas fa-info-circle"></i>
+                <span>Overview</span>
+            </button>
+            <button class="tab-nav-btn" onclick="switchTab('materials')">
+                <i class="fas fa-file-pdf"></i>
+                <span>Materials</span>
+            </button>
+            <button class="tab-nav-btn" onclick="switchTab('chat')">
+                <i class="fas fa-comments"></i>
+                <span>Discussion</span>
+            </button>
+        </div>
+        <div class="content-grid">
+            <!-- ── MAIN AREA ── -->
+            <div class="main-content">
+                <!-- Overview -->
+                <div id="overview" class="tab-content active">
+                    <div class="content-card">
+                        <h2 class="content-title">About This Course</h2>
+                        <h3 id="overviewDesc" class="content-text"></h3>
+                        <h3 class="content-subtitle">Enrolled Students</h3>
+                        <ul id="studentsList" class="student-list">
+                            <li class="student-list-empty">No students enrolled yet.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Materials -->
+                <div id="materials" class="tab-content">
+                    <div class="materials-grid">
+                        <div class="material-card">
+                            <div class="material-header">
+                                <div class="material-icon">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <div>
+                                    <h3 class="material-title">Course Textbook</h3>
+                                    <p class="material-subtitle">Complete reference guide</p>
+                                </div>
+                            </div>
+                            <div class="material-body">
+                                <iframe id="bookFrame" src="" class="material-iframe"></iframe>
+                            </div>
+                        </div>
+                        <div class="material-card">
+                            <div class="material-header">
+                                <div class="material-icon">
+                                    <i class="fas fa-chalkboard"></i>
+                                </div>
+                                <div>
+                                    <h3 class="material-title">Lecture Slides</h3>
+                                    <p class="material-subtitle">Visual presentation materials</p>
+                                </div>
+                            </div>
+                            <div class="material-body">
+                                <iframe id="slidesFrame" src="" class="material-iframe"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Chat -->
+                <div id="chat" class="tab-content">
+                    <div class="chat-placeholder">
+                        <i class="fas fa-comments"></i>
+                        <h3>Course Discussion Room</h3>
+                        <p>Chat with fellow students enrolled in this course.</p>
+                        <button
+                                onclick="openCourseChat()"
+                                class="enroll-btn"
+                                style="width: auto; display: inline-flex"
+                        >
+                            <i class="fas fa-comments"></i>
+                            <span>Open Course Chat</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- ── SIDEBAR ── -->
+            <aside class="sidebar">
+                <div class="enroll-card">
+                    <button class="enroll-btn" onclick="openCourseChat()">
+                        <i class="fas fa-comments"></i>
+                        <span>Open Chat</span>
+                    </button>
+                    <button class="enroll-btn unenroll-btn" id="unenrollBtn" onclick="unenrollCourse()">
+                        <i class="fas fa-times"></i>
+                        <span>Unenroll</span>
+                    </button>
+                    <p class="enroll-note">You are enrolled in this course</p>
+                </div>
+                <div class="info-card">
+                    <h3 class="info-title">Course Details</h3>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <label>Duration</label>
+                                <p>12 Weeks</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-chart-line"></i>
+                            <div>
+                                <label>Level</label>
+                                <p>Intermediate</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-language"></i>
+                            <div>
+                                <label>Language</label>
+                                <p>English</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+<!-- ── ERROR STATE ───────────────────────────────────────────────── -->
+<div id="errorMessage" class="error-state">
+    <i class="fas fa-exclamation-triangle"></i>
+    <h2>Course Not Found</h2>
+    <p>The course you're looking for doesn't exist or has been removed.</p>
+    <button onclick="window.location.href='courses.html'" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+        <span>Back to Courses</span>
+    </button>
+</div>
+<!-- ── FOOTER ──────────────────────────────────────────────────── -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="footer-logo-wrapper">
+                    <img src="/img/logowhite.png" alt="ITBook" class="footer-logo" />
+                </div>
+                <h3>ITBook</h3>
+                <p>Empowering learners worldwide with cutting-edge computer science education.</p>
+            </div>
+            <div class="footer-links-group">
+                <div class="footer-column">
+                    <h4>Platform</h4>
+                    <a href="courses.html">Courses</a>
+                    <a href="about.html">About Us</a>
+                    <a href="account.html">Account</a>
+                </div>
+                <div class="footer-column"></div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ITBOOK — All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <span>·</span>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="/js/session.js"></script>
+<script src="/js/course-detail.js"></script>
+</body>
+</html>
